@@ -1,6 +1,6 @@
 import { iter } from "https://deno.land/std@0.93.0/io/util.ts";
 
-const N = Deno.env.get("NEWLINE") || "\n";
+const N = "\n";
 export type M = {
   b: boolean;
   d: string[];
@@ -37,6 +37,7 @@ for await (const ck of iter(f)) {
   m.d = [];
   m.b = true;
 }
+Deno.writeFileSync(t, new TextEncoder().encode(N), { append: true });
 f.close();
 
 Deno.copyFileSync(t, o);
